@@ -1,4 +1,5 @@
 import { menuArray } from './data.js'
+import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
 
 let items = document.getElementById('items')
 let modal = document.getElementById('modal')
@@ -35,12 +36,25 @@ document.addEventListener('click', function(e){
         modal.style.display = 'flex'
     else if(e.target.dataset.itemId)
         handleOrderClick(e.target.dataset.itemId)
+    else if(e.target.dataset.orderId)
+        handleRemoveOrderClick(e.target.dataset.orderId)
 })
+
+
+function handleRemoveOrderClick(orderId){
+    const index = orders.findIndex(order => order.id === orderId)
+    orders.splice(index, 1)
+    if(orders.length > 0)
+        renderOrders()
+    else
+        ordersDiv.innerHTML = ''
+}
 
 function handleOrderClick(itemId){
 
     const item = menuArray.find((x) => x.id == itemId)
     orders.push({
+        id: uuidv4(),
         name: item.name,
         price: item.price,
     })
@@ -55,7 +69,7 @@ function renderOrders(){
         total += item.price
         ordersHtml += `
             <div class="order">
-                <p>${item.name}<small id="remove">remove</small></p>
+                <p>${item.name}<small id="remove-item" class="remove-item" data-order-id="${item.id}">remove</small></p>
                 <span>$${item.price}</span>
             </div>
         `

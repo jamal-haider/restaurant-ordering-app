@@ -189,3 +189,7 @@ body{
     text-align: center;
     border-radius: 5px;
 }
+
+.remove-item{
+    cursor: pointer;
+}
