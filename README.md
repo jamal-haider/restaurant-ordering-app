@@ -6,9 +6,9 @@
 
 ---
 
-```
-You can place order by adding items into the cart, you can also remove order by clicking the remove button inside the orders section. To checkout you need to hit the complete button.
-```
+
+> You can place order by adding items into the cart, you can also remove order by clicking the remove button inside the orders section. To checkout you need to hit the complete button.
+
 
 ---
 
